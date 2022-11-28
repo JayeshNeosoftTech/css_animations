@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+    body{
+        background-color: whitesmoke;
+    }
+.mask1 {
+  -webkit-mask-image: url('../assets/img/get.png');
+  /* mask-image: url('/assets/img/get2.png'); */
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 40%;
+  mask-repeat: no-repeat;    
+}
+</style>
+</head>
+<body>
+
+<h1>The mask-image Property</h1>
+
+<h3>An image with a mask layer image:</h3>
+<div class="mask1">
+  <img src="../assets/img/get2.png" alt="Cinque Terre" width="400" height="400">
+</div>
+<img src="../assets/img/get.png" alt="get" width="400" height="400">
+
+<h3>Original image:</h3>
+<img src="../assets/img/get2.png" alt="Cinque Terre" width="600" height="400">
+
+<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simple color fill -->
+  <circle cx="50" cy="50" r="40" fill="pink" />
+
+  <!-- Fill circle with a gradient -->
+  <defs>
+    <radialGradient id="myGradient">
+      <stop offset="0%" stop-color="pink" />
+      <stop offset="100%" stop-color="black" />
+    </radialGradient>
+  </defs>
+
+  <circle cx="150" cy="50" r="40" fill="url(#myGradient)" />
+
+  <!--
+  Keeping the final state of an animated circle
+  which is a circle with a radius of 40.
+  -->
+  <circle cx="250" cy="50" r="20">
+    <animate
+      attributeType="XML"
+      attributeName="r"
+      from="0"
+      to="40"
+      dur="5s"
+      fill="freeze" />
+  </circle>
+</svg>
+
+</body>
+</html>

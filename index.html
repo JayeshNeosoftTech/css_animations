@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archery Game Zone</title>                
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="score_heading">Your score: <span id="score">0</span></h2>
+        <div class="board_container" id="archery_board">
+            <div class="black-layer layer">
+                <div class="blue-layer layer">
+                    <div class="red-layer layer">
+                        <div class="yellow-layer layer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow_container">
+            <!-- <img src="" alt="archery"> -->
+            <img src="./assets/img/arrow.png" alt="arrow" class="arrow_img" id="myDIV">
+        </div>
+        <div class="btn_wrapper">
+            <button class="start_btn" onclick="game_start()">Shoot</button>
+        </div>
+    </div>
+
+    <script>
+        var board =document.querySelector('#archery_board');
+        var arrow_icon= document.getElementById("myDIV");
+        var score_value= document.getElementById("score").innerText;
+        score_value= parseInt(score_value);
+
+        /* creating point element */
+        var point_element= document.createElement('p');
+        point_element.classList.add("points");
+
+        function game_start(){
+            var arrow_movement = document.getElementsByClassName('arrow_img');
+            var position_board = getComputedStyle(board);
+            var position_arrow = getComputedStyle(arrow_icon);
+
+            console.log(arrow_icon.style.top == '-60px');
+            /* Winning condition */
+            if(score_value>=250){
+                alert("Congratulations!!!! \nYou win.......");
+                window.location.reload();
+            }
+            else{
+                if(arrow_icon.style.top == '-60px'){
+                    arrow_icon.style.top= '300px';
+                }
+                else{
+                    arrow_icon.style.top= '-60px';
+                }
+                /* console.log("Bord state:"+board.style.animationPlayState); */
+                if(board.style.animationPlayState=="paused"){
+                    board.style.animationPlayState = "running";
+                    /* console.log("Bord state:"+board.style.animationPlayState); */
+                    arrow_icon.style.top= "300px";
+                }
+                else{
+                    if((position_board.marginLeft > '567px' && position_board.marginLeft < '593px') || (position_board.marginLeft > '745px' && position_board.marginLeft < '769px')){
+                            board.style.animationPlayState = 'paused';
+                            score_value= score_value + 10;
+                            document.getElementById("score").innerText= score_value;
+                            /* console.log(position_arrow.top);
+                            console.log("Score_value: "+score_value); */
+                            point_element.innerText= "10+";
+                            arrow_icon.before(point_element);
+                    }
+                    else if((position_board.marginLeft > '593px' && position_board.marginLeft < '617px') || (position_board.marginLeft > '721px' && position_board.marginLeft < '745px')){
+                            board.style.animationPlayState = 'paused';
+                            score_value= score_value + 20;
+                            document.getElementById("score").innerText= score_value;
+                            /* console.log(position_arrow.top);
+                            console.log("Score_value: "+score_value); */
+                            point_element.innerText= "20+";
+                            arrow_icon.before(point_element);
+                    }
+                    else if((position_board.marginLeft > '617px' && position_board.marginLeft < '645px') || (position_board.marginLeft > '694px' && position_board.marginLeft < '721px')){
+                            board.style.animationPlayState = 'paused';
+                            score_value= score_value + 40;
+                            document.getElementById("score").innerText= score_value;
+                            /* console.log(position_arrow.top);
+                            console.log("Score_value: "+score_value); */
+                            point_element.innerText= "40+";
+                            arrow_icon.before(point_element);
+                    }
+                    else if(position_board.marginLeft > '645px' && position_board.marginLeft < '694px'){
+                            board.style.animationPlayState = 'paused';
+                            score_value= score_value + 80;
+                            document.getElementById("score").innerText= score_value;
+                            /* console.log(position_arrow.top);
+                            console.log("Score_value: "+score_value); */
+                            point_element.innerText= "80+";
+                            arrow_icon.before(point_element);
+                    }
+                    else if(board.style.animationPlayState=="running" && arrow_icon.top=="-60px"){
+                        alert("You missed!!!");
+                    }
+                }
+
+                /* console.log("----Ending Part-----")
+                console.log("top:"+position_arrow.top);
+                console.log("left: "+position_board.marginLeft);
+                console.log("Score_value: "+score_value); */
+            }
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+*, html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    overflow-x: hidden;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.mouse_circle{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    mix-blend-mode: difference;
+    transition: transform .2s, width .4s, height .4s;
+}
+button{
+    cursor: pointer;
+}
+h2{
+    margin: 100px auto 0;
+    color: #FFFFFF;
+    width: fit-content;
+    font-size: 30px;
+}
+p:hover{
+    color: red;
+}
+.ani_btn-wrapper{
+    margin: 50px auto; 
+    width: 210px;
+    height: 110px;
+   /*  border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ani_btn-inner{
+    position: relative;
+    width: 150px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.ani_btn{
+    padding: 15px;
+    width: 150px;
+    height: 52px;
+    background: #3398ff;
+    color: white;
+    font-size: 18px;
+    border-radius: 15px;
+    border: transparent;
+    cursor: pointer;
+    transition: 0.5s ease-in;
+}
+.hover_effect{
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    transition: 0.5s ease-in;
+    background: rgb(255, 89, 131);
+    border-radius: 50%;
+}
+.hover_effect span{
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    left: 21%;
+    top: 32%;
+}
+.ani_btn-wrapper:hover .ani_btn{
+    padding-top: 52px;
+}
+.ani_btn-wrapper:hover .hover_effect{
+    top: -7px;
+    left: -25px;
+    height: 70px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+/* Container of buttons */
+.btn_container{
+    text-align: center;
+    margin: 30px auto;
+    display: flex;
+    width: fit-content;
+}
+.back_slide{
+    border: 1px solid #3398ff;
+    background: none;
+    color: #3398ff;
+    padding: 15px 20px;
+    margin-left: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 1s;
+    z-index: 1;
+}
+.back_slide::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #3398ff;
+    z-index: -1;
+    transition: 1s;
+}
+.btn1:hover, .btn2:hover{
+    color: #FFFFFF;
+}
+.btn1::before{
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+.btn1:hover::before, .btn2:hover::before{
+    height: 310px;
+}
+
+/* Slide Up style */
+.btn2::before{
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+}
+
+/* Border animation style */
+.border_ani-btn{
+    font-size: 18px;
+    padding: 15px 20px;
+    background: #262c37;
+    color: rgba(255, 255, 255, 0.4);
+    position: relative;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: 0.5s;
+}
+.border_ani-btn:hover{
+    color: rgba(255, 255, 255, 1);
+}
+.border_ani-btn span{
+    position: absolute;
+    background: #39ff14;
+}
+.border_ani-btn span:nth-child(1){
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+.border_ani-btn:hover span:nth-child(1){
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+}
+.border_ani-btn span:nth-child(2){
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+.border_ani-btn:hover span:nth-child(2){
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+.border_ani-btn span:nth-child(3){
+    right: 0;
+    bottom: 0;
+    width: 3px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+.border_ani-btn:hover span:nth-child(3){
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+.border_ani-btn span:nth-child(4){
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+.border_ani-btn:hover span:nth-child(4){
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+    transition-delay: 0.5s;
+}
+
+/* Border Gradient style */
+.border_grade-btn{
+    font-size: 18px;
+    width: 160px;
+    height: 50px;
+    line-height: 48px;
+    margin-left: 20px;
+    background: #262c37;
+    color: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+}
+.border_grade-btn span{
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    background: #262c37;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    transition: 0.5s;
+    z-index: 1;
+}
+.border_grade-btn span:hover{
+    color: rgba(255, 255, 255, 1);
+}
+.border_grade-btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #fb0094, #00f, #0f0, 
+                    #ff0, #f00, #fb0094, #00f, #0f0, 
+                    #ff0, #f00);
+    background-size: 400%;
+    opacity: 0;
+    transition: 0.5s;
+    animation: animate 20s linear infinite;
+}
+.border_grade-btn::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #fb0094, #00f, #0f0, 
+                    #ff0, #f00, #fb0094, #00f, #0f0, 
+                    #ff0, #f00);
+    background-size: 400%;
+    filter: blur(20px);
+    opacity: 0;
+    transition: 0.5s;
+    animation: animate 20s linear infinite;
+}
+.border_grade-btn:hover::before, .border_grade-btn:hover::after{
+    opacity: 1;
+}
+@keyframes animate {
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 300% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+
+/* Mouse enter and out based animation */
+.mouse_btn{
+    margin-left: 20px;
+    padding: 15px 20px;
+    font-size: 18px;
+    background: none;
+    border: 2px solid #0f0;
+    color: #0f0;
+    position: relative;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 0;
+}
+.mouse_btn:hover{
+    color: #262c37;
+}
+.mouse_btn span{
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #0f0;
+    transition: width 0.8s, height 0.8s;
+    z-index: -1;
+}
+.mouse_btn:hover span{
+    width: 600px;
+    height: 600px;
+}
+
+/* Animation On SVG*/
+.svg_ani-container{
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(245, 245, 247);
+}
+.svg_ani{
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    position: relative;
+}
+.svg_ani svg{
+    width: 400px;
+    height: 400px;
+    margin: 30px 0;
+    position: relative;
+    transition: filter 0.8s;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.svg_ani span{
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #0f0;
+    transition: width 0.8s, height 0.8s;
+    z-index: 0;
+}
+.circular_shape{
+    position: absolute;
+    width: 369px;
+    height: 370px;
+    border-radius: 100%;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #FFFFFF;
+    overflow: hidden;
+    z-index: 10;
+}
+.circular_shape span{
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: black;
+    transition: width 0.8s, height 0.8s;
+    z-index: -1;
+}
+.circular_shape:hover span{
+    width: 600px;
+    height: 600px;
+}
+.circular_shape:hover + svg{
+    filter: brightness(0) saturate(100%);
+}
+
+
+/* Animation on circular shape */
+.circle{
+    width: 300px;
+    height: 300px;
+    background: #FFFFFF;
+    border-radius: 100%;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+}
+.circle span{
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: black;
+    transition: width 0.8s, height 0.8s;
+    z-index: -1;
+}
+.circle:hover span{
+    width: 600px;
+    height: 600px;
+}
+
+
+.trial{
+    width: fit-content;
+    height: fit-content;
+    -webkit-mask-image: url(../img/get2.png);
+    mask-image: url(../img/get2.png);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    background: url(../img/get.svg);
+}
+.trial img{
+    width: 300px;
+    height: 300px;
+}
+/* .trial:hover{
+    -webkit-mask-image: url(../img/get2.svg);
+    mask-image: url(../img/get2.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+} */
+

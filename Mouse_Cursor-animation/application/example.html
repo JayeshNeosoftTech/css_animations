@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Example </title>
+
+    <link rel="stylesheet" href="../assets/css/ex.css">
+</head>
+<body>
+    <ul class="quiz">
+        <li>
+            <h4>How many letters are there in "JS"?</h4>
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="A" id="r1" /><span
+                            >2</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="B" id="r1"/><span
+                            >1</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="C" id="r1" /><span
+                            >3</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question0" value="D" id="r1"/><span
+                            >4</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>How many letters are there in "BMX"?</h4>
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="A" id="r2" /><span
+                            >2</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="B" id="r2"/><span
+                            >1</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="C" id="r2"/><span
+                            >3</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question1" value="D" id="r2"/><span
+                            >4</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>How many letters are there in "A"?</h4>
+            <ul class="choices">
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="A" id="r3"/><span
+                            >2</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="B" id="r3"/><span
+                            >1</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="C" id="r3"/><span
+                            >3</span
+                        ></label
+                    >
+                </li>
+                <li>
+                    <label
+                        ><input type="radio" name="question2" value="D" id="r3"/><span
+                            >4</span
+                        ></label
+                    >
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <button class="view-results" onclick="returnScore()">View Results</button>
+    <span id="myresults" class="my-results">My results will appear here</span>
+
+    <script>
+        var ans= ['B','C','B'];
+        var result= document.getElementById("myresults");
+        function returnScore(){
+           var score=0;
+           for(var j=0; j < 3; j++){
+            var id_str= "#r"+j;
+            var Q = document.querySelectorAll(`#r${j+1}`);
+            console.log(Q);
+            for(var i=0; i < 4; i++){
+                if(Q[i].checked){
+                    if(Q[i].value == ans[j]){
+                        console.log("Correct");
+                        score=score+1;
+                    }
+                    else{
+                        console.log("Wrong");
+                    }
+                }
+           }
+           }
+           result.innerHTML= "Your score is "+score+"/3.";
+           console.log(score);
+           
+        }
+    
+    </script>
+</body>
+</html>

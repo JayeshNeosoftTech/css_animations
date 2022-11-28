@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archery Game</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="score_heading">Your score: <span id="score">0</span></h2>
+        <div class="board_container" id="archery_board">
+            <div class="black-layer layer">
+                <div class="blue-layer layer">
+                    <div class="red-layer layer">
+                        <div class="yellow-layer layer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow_container">
+            <!-- <img src="" alt="archery"> -->
+            <img src="./assets/img/arrow.png" alt="arrow" class="arrow_img" id="myDIV">
+        </div>
+        <div class="btn_wrapper">
+            <button class="start_btn" onclick="game_start()">Start</button>
+        </div>
+    </div>
+
+    <script>
+        var board =document.querySelector('#archery_board');
+        var arrow_icon= document.getElementById("myDIV");
+        var score_value= document.getElementById("score").innerText;
+        score_value= parseInt(score_value);
+
+        /* function addAnimation(body) { 
+            let dynamicStyles = null;
+            if (!dynamicStyles) {
+                dynamicStyles = document.createElement('style');
+                dynamicStyles.type = 'text/css';
+                document.head.appendChild(dynamicStyles);
+            }
+            dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
+            arrow_icon.style.animation= "arrow_move 1s";
+            addAnimation(`
+            @keyframes arrow_move {
+                0%{
+                    top: 300px;
+                }
+                10%{
+                    top: 150px;
+                }
+                50%{
+                    top: 100px;
+                }
+                100%{
+                    top: -60px;
+                }
+            }
+        `);
+        } */
+
+        function game_start(){
+            var arrow_movement = document.getElementsByClassName('arrow_img');
+            document.getElementById("myDIV").style.animationName = "arrow_move";
+            
+
+            console.log(board.style.animationPlayState=="paused");
+            if(board.style.animationPlayState=="paused"){
+                board.style.animationPlayState = "running";
+                console.log(board.style.animationPlayState=="paused");
+            }
+
+            var position_board = getComputedStyle(board);
+            var position_arrow = getComputedStyle(arrow_icon);
+            var mt_arrow = position_arrow.marginTop;
+        
+            console.log(position_arrow.top);
+            console.log(position_board.marginLeft);
+            console.log("Score_value: "+score_value);
+
+            if(position_board.marginLeft > '730px' && position_board.marginLeft < '735px'){
+                    board.style.animationPlayState = 'paused';
+                    score_value= score_value + 10;
+                    document.getElementById("score").innerText= score_value;
+                    console.log(position_arrow.top);console.log("Score_value: "+score_value);
+                    console.log("Score_value: "+score_value);
+
+            }
+            else if(position_board.marginLeft > '708px' && position_board.marginLeft < '731px'){
+                    board.style.animationPlayState = 'paused';
+                    score_value= score_value + 20;
+                    document.getElementById("score").innerText= score_value;
+                    console.log(position_arrow.top);
+                    console.log("Score_value: "+score_value);
+            }
+            else if(position_board.marginLeft > '683px' && position_board.marginLeft < '709px'){
+                    board.style.animationPlayState = 'paused';
+                    score_value= score_value + 40;
+                    document.getElementById("score").innerText= score_value;
+                    console.log(position_arrow.top);
+                    console.log("Score_value: "+score_value);
+            }
+            else if(position_board.marginLeft > '645px' && position_board.marginLeft < '685px'){
+                    board.style.animationPlayState = 'paused';
+                    score_value= score_value + 80;
+                    document.getElementById("score").innerText= score_value;
+                    console.log(position_arrow.top);
+                    console.log("Score_value: "+score_value);
+            }
+            
+        }
+    </script>
+</body>
+</html>
